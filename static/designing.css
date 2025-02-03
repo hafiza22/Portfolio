@@ -1,0 +1,1290 @@
+/* Core variables */
+:root {
+    --primary: #1a237e;
+    --secondary: #1565c0;
+    --accent: #3b82f6;
+    --background: rgba(255, 255, 255, 0.95);
+    --text-primary: #1e40af;
+    --text-secondary: #6b7280;
+}
+
+/* Reset and base styles */
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    scroll-padding-top: 80px; /* Should match your header height */
+}
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Header styles */
+#sticky-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(26, 35, 126, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 80px; /* Increased height */
+    display: flex;
+    align-items: center;
+}
+
+/* Hero container */
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 800px;
+    margin: 40px auto 0;
+    padding: 2rem;
+    gap: 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+/* Profile image */
+.profile-image {
+    flex: 0 0 250px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Text styles */
+.typing-text h2 {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.typing-name h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .hero-container {
+        flex-direction: column;
+        padding: 1.5rem;
+        margin-top: 60px;
+        width: 90%;
+    }
+
+    .profile-image {
+        flex: 0 0 200px;
+        height: 250px;
+    }
+
+    .typing-name h1 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-container {
+        padding: 1rem;
+        width: 92%;
+    }
+
+    .profile-image {
+        flex: 0 0 180px;
+        height: 220px;
+    }
+
+    .typing-name h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Combined animations */
+@keyframes all-animations {
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    @keyframes slideUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes gradientBG {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.5); opacity: 0; }
+    }
+}
+
+/* Core styles */
+.hero {
+    position: relative;
+    background: linear-gradient(-45deg, var(--primary), #283593, var(--secondary), #0277bd);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    min-height: 100vh;
+}
+
+/* Combined hover effects */
+.hover-scale, .project-card, .education-card {
+    transition: all 0.3s ease;
+}
+.hover-scale:hover, .project-card:hover, .education-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Combined card styles */
+.hero-container, .project-card, .education-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Navbar styles */
+.navbar {
+    padding: 1rem 0; /* Increased padding */
+    width: 100%;
+}
+
+/* Navigation link styles */
+.nav-link {
+    position: relative;
+    padding: 0.75rem 1.25rem; /* Increased padding */
+    font-weight: 500;
+    font-size: 1.1rem; /* Slightly larger font */
+    transition: all 0.3s ease;
+}
+
+/* Logo text size */
+.navbar .text-white.font-bold.text-xl {
+    font-size: 1.5rem; /* Larger logo text */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .navbar ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(26, 35, 126, 0.98);
+        padding: 1rem;
+        flex-direction: column;
+        border-radius: 0 0 15px 15px;
+    }
+    .hero-container { margin-top: 60px; padding: 1rem; }
+    .education-card { margin: 1rem 0; }
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.profile-image img {
+  transition: transform 0.3s ease;
+  border: 4px solid #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  animation: imageLoad 0.5s ease forwards;
+}
+
+.profile-image img:hover {
+  transform: scale(1.05);
+}
+
+/* Skill bar animations */
+.progress-bar {
+    transition: width 1.5s ease-in-out;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Add hover effect to skill bars */
+.progress-bar:hover {
+    filter: brightness(110%);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+/* Animated background for sections */
+section {
+    position: relative;
+    overflow: hidden;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(66, 153, 225, 0.05) 0%, rgba(129, 230, 217, 0.05) 100%);
+    transform: translateX(-100%);
+    animation: sectionBg 15s ease-in-out infinite;
+}
+
+@keyframes sectionBg {
+    0% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Animated borders for cards */
+.animated-border {
+    position: relative;
+    background: linear-gradient(60deg, #5f27cd, #341f97);
+    padding: 3px;
+    border-radius: 10px;
+}
+
+.animated-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 10px;
+    background: linear-gradient(60deg, #2575fc, #6a11cb);
+    filter: blur(10px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.animated-border:hover::before {
+    opacity: 1;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #2575fc, #6a11cb);
+}
+
+/* Text gradient effect */
+.text-gradient {
+    background: linear-gradient(45deg, #3b82f6, #6366f1, #8b5cf6);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientFlow 8s ease infinite;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
+.text-gradient::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.6s ease;
+}
+
+.text-gradient:hover {
+    animation: gradientPulse 2s ease infinite;
+    text-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+}
+
+.text-gradient:hover::after {
+    transform: scaleX(1);
+}
+
+/* Center container for headings */
+.heading-container {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes gradientPulse {
+    0%, 100% {
+        filter: brightness(1);
+    }
+    50% {
+        filter: brightness(1.2);
+    }
+}
+
+/* Sticky header styles */
+#sticky-header.scrolled {
+    background: rgba(26, 35, 126, 0.95);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Remove any body padding */
+body {
+    padding-top: 0;
+    margin: 0;
+}
+
+/* Homepage background styles */
+#home {
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(
+        120deg,
+        #fafafa 0%,
+        #f3f4f6 50%,
+        #f8fafc 100%
+    );
+    overflow: hidden;
+}
+
+/* Subtle pattern overlay */
+.bg-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    background: 
+        radial-gradient(circle at 25px 25px, #e2e8f0 2%, transparent 0%),
+        radial-gradient(circle at 75px 75px, #e2e8f0 2%, transparent 0%);
+    background-size: 100px 100px;
+}
+
+/* Hero container styles */
+.hero-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 40px auto 0;
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    box-shadow: 
+        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+/* Remove unnecessary elements */
+.bg-animation,
+.bg-gradient,
+.bg-particles,
+.floating-dots {
+    display: none;
+}
+
+/* Profile image styles - clean and simple */
+.profile-image {
+    flex: 0 0 250px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Remove all effects from container and profile */
+.hero-container::before,
+.hero-container::after,
+.profile-image::before,
+.profile-image::after {
+    display: none;
+}
+
+.hero-container,
+.profile-image,
+.profile-image img {
+    transform: none;
+    transition: none;
+    animation: none;
+    filter: none;
+    -webkit-filter: none;
+    backdrop-filter: none;
+}
+
+/* Social links hover effects */
+.social-links a {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* GitHub specific hover effect */
+.social-links a:first-child:hover {
+    transform: translateY(-3px);
+    color: #2563eb; /* blue-600 */
+    filter: drop-shadow(0 4px 6px rgba(37, 99, 235, 0.3));
+}
+
+/* LinkedIn specific hover effect */
+.social-links a:last-child:hover {
+    transform: translateY(-3px);
+}
+
+/* Remove any existing hover effects from designing.css */
+.social-links a::after {
+    display: none;
+}
+
+/* Update text colors for better visibility */
+.profile-details h1 {
+    color: #1a237e;
+}
+
+.profile-details h2 {
+    color: #1565c0;
+}
+
+.profile-details .title {
+    color: #1976d2;
+}
+
+/* Update typing animation styles */
+.typing-text {
+    overflow: visible;
+    white-space: nowrap;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.typing-text h2 {
+    font-size: 1rem;
+    color: #6b7280;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 1;
+    animation: fadeInText 1s ease-in forwards;
+}
+
+.typing-name {
+    overflow: visible;
+    white-space: nowrap;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.typing-name h1 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    background: linear-gradient(
+        45deg,
+        #1e40af,
+        #3b82f6,
+        #8b5cf6
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientText 6s linear infinite, fadeInText 1s ease-in 0.5s forwards;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+    opacity: 1;
+}
+
+/* New animation for text fade in */
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Update typing animation keyframes */
+@keyframes typing {
+    from { 
+        width: 0;
+        opacity: 1;
+    }
+    to { 
+        width: 100%;
+        opacity: 1;
+    }
+}
+
+/* Remove these properties from existing styles */
+.typing-text, .typing-name {
+    border-right: none; /* Remove the border that creates the cursor */
+}
+
+/* Update text styles */
+.typing-text h2 {
+    font-size: 1rem;
+    color: #6b7280;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 1;
+    animation: fadeInText 1s ease-in forwards;
+}
+
+.typing-name h1 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    background: linear-gradient(
+        45deg,
+        #1e40af,
+        #3b82f6,
+        #8b5cf6
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientText 6s linear infinite, fadeInText 1s ease-in 0.5s forwards;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+    opacity: 1;
+}
+
+/* Add responsive styles */
+@media (max-width: 768px) {
+    .hero-container {
+        flex-direction: column;
+        padding: 1rem;
+        margin-top: 70px;
+        width: 95%;
+    }
+
+    .profile-image {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto 2rem;
+    }
+
+    .profile-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .profile-details {
+        text-align: center;
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .typing-text h2 {
+        font-size: 1.5rem;
+    }
+
+    .typing-name h1 {
+        font-size: 2rem;
+    }
+
+    .contact-info {
+        justify-content: center;
+        padding: 0.5rem;
+    }
+
+    .contact-info li {
+        font-size: 0.9rem;
+        margin: 0.5rem 0;
+    }
+
+    .social-links {
+        justify-content: center;
+        margin-top: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-container {
+        margin-top: 60px;
+        padding: 0.5rem;
+    }
+
+    .profile-image {
+        width: 150px;
+        height: 150px;
+    }
+
+    .typing-text h2 {
+        font-size: 1.2rem;
+    }
+
+    .typing-name h1 {
+        font-size: 1.8rem;
+    }
+
+    .contact-info li {
+        font-size: 0.8rem;
+    }
+}
+
+/* Add smooth transitions for responsive changes */
+.hero-container,
+.profile-image,
+.profile-details,
+.typing-text h2,
+.typing-name h1 {
+    transition: all 0.3s ease;
+}
+
+/* Add these styles to your existing CSS */
+.typing-text h2 {
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
+}
+
+.typing-name h1 {
+    opacity: 0;
+    animation: fadeIn 1s ease-in 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hero section styles - more compact container */
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 900px;
+    margin: 40px auto 0;
+    padding: 2rem;
+    gap: 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    min-height: 450px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    z-index: 1;
+}
+
+/* Remove gradient border and animations from container */
+.hero-container::before {
+    display: none;
+}
+
+/* Remove float animation from container */
+.hero-container {
+    animation: none;
+    transform: none;
+}
+
+/* Remove hover effect from container */
+.hero-container:hover {
+    transform: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile image styles - natural look */
+.profile-image {
+    flex: 0 0 250px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 1;
+    transform: none;
+    transition: none;
+    filter: none;
+    -webkit-filter: none;
+    border: none;
+    box-shadow: none;
+    animation: none;
+}
+
+/* Remove all hover effects */
+.profile-image:hover {
+    transform: none;
+}
+
+.profile-image img:hover {
+    transform: none;
+}
+
+/* Remove any overlays or effects */
+.profile-image::before,
+.profile-image::after {
+    display: none;
+}
+
+/* Profile details styles */
+.profile-details {
+    flex: 1;
+    padding: 1rem 0;
+}
+
+.title {
+    font-size: 1.3rem;
+    color: #3b82f6;
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+}
+
+.contact-info {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.contact-info li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    color: #4b5563;
+}
+
+.contact-info li strong {
+    min-width: 100px;
+    color: #1e40af;
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-links a {
+    position: relative;
+    font-size: 1.5rem;
+    color: #4b5563;
+    transition: transform 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-5px);
+}
+
+.social-links a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: currentColor;
+    border-radius: 50%;
+    opacity: 0.2;
+    filter: blur(8px);
+    transform: scale(0);
+    transition: transform 0.3s ease;
+}
+
+.social-links a:hover::after {
+    transform: scale(1.5);
+}
+
+/* Add new animations */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes gradientText {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Updated responsive styles */
+@media (max-width: 1024px) {
+    .hero-container {
+        max-width: 80%;
+        min-height: 400px;
+        padding: 1.8rem;
+    }
+
+    .profile-image {
+        flex: 0 0 220px;
+        height: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-container {
+        max-width: 90%;
+        min-height: auto;
+        padding: 1.5rem;
+        margin-top: 50px;
+        gap: 1.5rem;
+    }
+
+    .profile-image {
+        flex: 0 0 200px;
+        height: 250px;
+    }
+
+    .typing-name h1 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-container {
+        padding: 1rem;
+        margin-top: 40px;
+        width: 92%;
+    }
+
+    .profile-image {
+        flex: 0 0 180px;
+        height: 220px;
+    }
+
+    .typing-name h1 {
+        font-size: 1.8rem;
+    }
+
+    .typing-text h2 {
+        font-size: 0.8rem;
+    }
+
+    .title {
+        font-size: 1.1rem;
+    }
+
+    .contact-info li {
+        font-size: 0.9rem;
+    }
+}
+/* Add smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* Add subtle shadow animation to hero container */
+@keyframes containerFloat {
+    0%, 100% {
+        box-shadow: 
+            0 15px 35px rgba(0, 0, 0, 0.1),
+            0 5px 15px rgba(0, 0, 0, 0.05);
+        transform: translateY(0);
+    }
+    50% {
+        box-shadow: 
+            0 20px 45px rgba(0, 0, 0, 0.12),
+            0 10px 20px rgba(0, 0, 0, 0.07);
+        transform: translateY(-5px);
+    }
+}
+
+/* Add geometric patterns */
+#home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(45deg, rgba(59, 130, 246, 0.03) 25%, transparent 25%) -50px 0,
+        linear-gradient(-45deg, rgba(59, 130, 246, 0.03) 25%, transparent 25%) -50px 0,
+        linear-gradient(45deg, transparent 75%, rgba(59, 130, 246, 0.03) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(59, 130, 246, 0.03) 75%);
+    background-size: 100px 100px;
+    animation: patternMove 20s linear infinite;
+    z-index: 0;
+}
+
+/* Add subtle glow effect */
+#home::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(30, 64, 175, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(17, 24, 39, 0.03) 0%, transparent 50%);
+    animation: glowPulse 10s ease-in-out infinite alternate;
+    z-index: 0;
+}
+
+/* Add floating dots */
+.floating-dots {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at center, rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+        radial-gradient(circle at center, rgba(30, 64, 175, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+    animation: floatingDots 20s linear infinite;
+    z-index: 0;
+    opacity: 0.5;
+}
+
+/* Animations */
+@keyframes patternMove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100px 100px;
+    }
+}
+
+@keyframes glowPulse {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes floatingDots {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Update hero container for better contrast */
+.hero-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.1),
+        0 1px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Add this div to your HTML right after the #home opening tag */
+<div class="floating-dots"></div>
+
+/* Add these styles at the top of your CSS file */
+#loader {
+    transition: opacity 0.5s ease-out;
+}
+
+/* Update the hero container styles */
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 800px;
+    margin: 40px auto 0;
+    padding: 2rem;
+    gap: 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+/* Update profile image styles */
+.profile-image {
+    flex: 0 0 250px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Fix background animation */
+#home {
+    position: relative;
+    min-height: 100vh;
+    padding-top: 80px;
+    background: linear-gradient(
+        -45deg,
+        rgba(37, 99, 235, 0.08),
+        rgba(99, 102, 241, 0.08),
+        rgba(139, 92, 246, 0.08),
+        rgba(59, 130, 246, 0.08)
+    );
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+    overflow: hidden;
+}
+
+/* Add missing animation keyframe */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Resume section styles */
+#resume .grid {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#resume .shadow-md {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#resume .shadow-md:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+#resume ul li {
+    transition: transform 0.3s ease;
+}
+
+#resume ul li:hover {
+    transform: translateX(5px);
+}
+
+/* Active nav link styles */
+.nav-link.active {
+    color: #fbbf24; /* yellow-400 in Tailwind */
+}
+
+/* Custom bounce animation for Get in Touch */
+.animate-bounce {
+    animation: customBounce 2s ease-in-out infinite;
+}
+
+@keyframes customBounce {
+    0%, 100% {
+        transform: translateY(0);
+        text-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+    }
+    50% {
+        transform: translateY(-15px);
+        text-shadow: 0 0 25px rgba(99, 102, 241, 0.4);
+    }
+}
+
+/* Shimmer effect for headings */
+.shimmer {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(45deg, #3b82f6, #6366f1, #8b5cf6);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientFlow 8s ease infinite;
+}
+
+.shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    animation: shimmerEffect 2s infinite;
+}
+
+@keyframes shimmerEffect {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 200%;
+    }
+}
+
+/* Typewriter effect for MY PROJECTS */
+.typewriter {
+    position: relative;
+    display: inline-block;
+}
+
+.typewriter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -4px;
+    width: 2px;
+    height: 100%;
+    background-color: #3b82f6;
+    animation: blink 0.7s infinite;
+}
+
+.typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation: typing 2s steps(12) forwards;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 0 }
+    50% { opacity: 1 }
+}
+
+/* Combine with shimmer */
+.typewriter.shimmer {
+    animation: 
+        typing 2s steps(12) forwards,
+        gradientFlow 8s ease infinite 2s;
+}
+
+/* Shimmer effect for MY PROJECTS */
+.shimmer-text {
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(
+        to right,
+        #3b82f6 20%,
+        #6366f1 30%,
+        #8b5cf6 70%,
+        #3b82f6 80%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+.shimmer-text::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 100%
+    );
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
