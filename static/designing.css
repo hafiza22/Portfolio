@@ -40,19 +40,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 900px;
-    width: 90%;
-    padding: 3rem;
+    max-width: 800px;
+    margin: 40px auto 0;
+    padding: 2rem;
     gap: 2rem;
-    margin: 0 auto;
-    background: transparent; /* Keep container transparent */
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 2;
-    min-height: 500px;
 }
 
 /* Profile image */
@@ -68,52 +64,58 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
-    border: 4px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Text styles */
 .typing-text h2 {
     font-size: 1rem;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--text-secondary);
     margin-bottom: 0.4rem;
     font-weight: 500;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .typing-name h1 {
     font-size: 2.8rem;
     font-weight: 800;
-    color: #ffffff;
+    color: var(--text-primary);
     margin-bottom: 1rem;
     line-height: 1.1;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive styles */
-@media (max-width: 1024px) {
-    #home {
-        padding: 100px 0;
-    }
-}
-
 @media (max-width: 768px) {
-    #home {
-        padding: 90px 0;
-    }
-    
     .hero-container {
         flex-direction: column;
-        padding: 2rem;
-        min-height: auto;
+        padding: 1.5rem;
+        margin-top: 60px;
+        width: 90%;
+    }
+
+    .profile-image {
+        flex: 0 0 200px;
+        height: 250px;
+    }
+
+    .typing-name h1 {
+        font-size: 2.2rem;
     }
 }
 
 @media (max-width: 480px) {
-    #home {
-        padding: 80px 0;
+    .hero-container {
+        padding: 1rem;
+        width: 92%;
+    }
+
+    .profile-image {
+        flex: 0 0 180px;
+        height: 220px;
+    }
+
+    .typing-name h1 {
+        font-size: 1.8rem;
     }
 }
 
@@ -225,8 +227,9 @@ html {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    to {
+        opacity: 1;
+    }
 }
 
 /* Add hover effect to skill bars */
@@ -386,15 +389,12 @@ body {
 #home {
     position: relative;
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 120px 0; /* Equal padding top and bottom */
     background: linear-gradient(
         135deg,
-        #4158D0 0%,    /* Deep blue */
-        #C850C0 50%,   /* Purple pink */
-        #4158D0 100%   /* Back to deep blue */
+        #4158D0 0%,      /* Bright Blue */
+        #C850C0 30%,     /* Pink */
+        #FFCC70 70%,     /* Light Orange */
+        #4158D0 100%     /* Back to Blue */
     );
     background-size: 300% 300%;
     animation: gradientFlow 15s ease infinite;
@@ -468,10 +468,12 @@ body {
 
 /* Hero container styles */
 .hero-container {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    z-index: 3;
 }
 
 /* Text styles for better visibility */
@@ -491,10 +493,6 @@ body {
 
 .contact-info li {
     color: rgba(255, 255, 255, 0.9);
-}
-
-.contact-info li strong {
-    color: #ffffff;
 }
 
 /* Remove any conflicting styles */
@@ -1108,10 +1106,12 @@ html {
 
 /* Update hero container for better contrast */
 .hero-container {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.1),
+        0 1px 8px rgba(0, 0, 0, 0.05);
 }
 
 /* Add this div to your HTML right after the #home opening tag */
@@ -1405,62 +1405,4 @@ html {
 #contact .grid > div:hover {
     transform: scale(1.02);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-
-/* Add these styles at the top of your CSS file */
-#home {
-    position: relative;
-    min-height: 100vh;
-    padding-top: 80px;
-    /* Remove any existing background styles */
-    background: linear-gradient(
-        135deg,
-        #4158D0 0%,    /* Deep blue */
-        #C850C0 30%,   /* Purple pink */
-        #FFCC70 70%,   /* Warm yellow */
-        #4158D0 100%   /* Back to deep blue */
-    );
-    background-size: 300% 300%;
-    animation: gradientFlow 15s ease infinite;
-    overflow: hidden;
-}
-
-/* Add this animation keyframe */
-@keyframes gradientFlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* Update hero container for better visibility */
-.hero-container {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 2;
-}
-
-/* Update text colors for better contrast */
-.typing-text h2,
-.title,
-.contact-info li {
-    color: rgba(255, 255, 255, 0.9);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.typing-name h1 {
-    color: #ffffff;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Remove any conflicting background classes */
-.bg-gray-50,
-.bg-animation,
-.bg-gradient,
-.bg-pattern,
-.bg-particles,
-.floating-dots {
-    display: none !important;
 }
