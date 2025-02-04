@@ -140,4 +140,22 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     });
+
+    // Contact section animation
+    const contactObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const containers = entry.target.querySelectorAll('.contact-info-container, .contact-form-container');
+                containers.forEach(container => {
+                    container.style.animationPlayState = 'running';
+                });
+                contactObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    const contactSection = document.querySelector('#contact .grid');
+    if (contactSection) {
+        contactObserver.observe(contactSection);
+    }
 });
