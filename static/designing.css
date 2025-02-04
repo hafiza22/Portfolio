@@ -27,10 +27,15 @@ body {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(26, 35, 126, 0.95);
+    background: linear-gradient(
+        to right,
+        #3b82f6 0%,    /* Blue */
+        #6366f1 50%,   /* Indigo */
+        #8b5cf6 100%   /* Purple */
+    );
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    height: 80px; /* Increased height */
+    height: 80px;
     display: flex;
     align-items: center;
 }
@@ -41,10 +46,12 @@ body {
     align-items: center;
     justify-content: space-between;
     max-width: 800px;
-    margin: 40px auto 0;
+    margin: 40px auto;
     padding: 2rem;
     gap: 2rem;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     position: relative;
@@ -69,7 +76,7 @@ body {
 /* Text styles */
 .typing-text h2 {
     font-size: 1rem;
-    color: var(--text-secondary);
+    color: #1e1b4b; /* indigo-950 */
     margin-bottom: 0.4rem;
     font-weight: 500;
     letter-spacing: 0.05em;
@@ -79,7 +86,7 @@ body {
 .typing-name h1 {
     font-size: 2.8rem;
     font-weight: 800;
-    color: var(--text-primary);
+    color: #312e81; /* indigo-900 */
     margin-bottom: 1rem;
     line-height: 1.1;
 }
@@ -374,7 +381,12 @@ section::before {
 
 /* Sticky header styles */
 #sticky-header.scrolled {
-    background: rgba(26, 35, 126, 0.95);
+    background: linear-gradient(
+        to right,
+        rgba(59, 130, 246, 0.95) 0%,    /* Blue */
+        rgba(99, 102, 241, 0.95) 50%,    /* Indigo */
+        rgba(139, 92, 246, 0.95) 100%    /* Purple */
+    );
     backdrop-filter: blur(8px);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
@@ -389,110 +401,36 @@ body {
 #home {
     position: relative;
     min-height: 100vh;
+    padding: 80px 0 100px;
     background: linear-gradient(
         135deg,
-        #4158D0 0%,      /* Bright Blue */
-        #C850C0 30%,     /* Pink */
-        #FFCC70 70%,     /* Light Orange */
-        #4158D0 100%     /* Back to Blue */
+        #3b82f6 0%,    /* Blue */
+        #6366f1 50%,   /* Indigo */
+        #8b5cf6 100%   /* Purple */
     );
-    background-size: 300% 300%;
+    background-size: 400% 400%;
     animation: gradientFlow 15s ease infinite;
     overflow: hidden;
 }
 
-/* Add floating particles effect */
-#home::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
-        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 20%);
-    animation: floatParticles 20s ease-in-out infinite;
-    z-index: 1;
-}
-
-/* Add shimmering effect */
-#home::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-        45deg,
-        rgba(255, 255, 255, 0.1) 0%,
-        rgba(255, 255, 255, 0) 50%,
-        rgba(255, 255, 255, 0.1) 100%
-    );
-    background-size: 200% 200%;
-    animation: shimmer 8s linear infinite;
-    z-index: 2;
-}
-
-/* Animations */
-@keyframes gradientFlow {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-@keyframes floatParticles {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-20px);
-    }
-}
-
-@keyframes shimmer {
-    0% {
-        background-position: 200% 0;
-    }
-    100% {
-        background-position: -200% 0;
-    }
-}
-
-/* Hero container styles */
+/* Update hero container for better contrast against the new background */
 .hero-container {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    z-index: 3;
 }
 
-/* Text styles for better visibility */
+/* Update text colors to match the new theme */
 .typing-text h2 {
-    color: rgba(255, 255, 255, 0.9);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #1976D2; /* Dark Blue */
 }
 
 .typing-name h1 {
-    color: #ffffff;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    color: #2196F3; /* Medium Blue */
 }
 
-.title {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.contact-info li {
-    color: rgba(255, 255, 255, 0.9);
+.title, .contact-info li {
+    color: #2BB8E4; /* Light Blue */
 }
 
 /* Remove any conflicting styles */
@@ -1128,7 +1066,7 @@ html {
     align-items: center;
     justify-content: space-between;
     max-width: 800px;
-    margin: 40px auto 0;
+    margin: 40px auto;
     padding: 2rem;
     gap: 2rem;
     background: rgba(255, 255, 255, 0.95);
@@ -1157,16 +1095,15 @@ html {
 #home {
     position: relative;
     min-height: 100vh;
-    padding-top: 80px;
+    padding: 80px 0 100px;
     background: linear-gradient(
-        -45deg,
-        rgba(37, 99, 235, 0.08),
-        rgba(99, 102, 241, 0.08),
-        rgba(139, 92, 246, 0.08),
-        rgba(59, 130, 246, 0.08)
+        135deg,
+        #3b82f6 0%,    /* Blue */
+        #6366f1 50%,   /* Indigo */
+        #8b5cf6 100%   /* Purple */
     );
     background-size: 400% 400%;
-    animation: gradientMove 15s ease infinite;
+    animation: gradientFlow 15s ease infinite;
     overflow: hidden;
 }
 
@@ -1210,7 +1147,7 @@ html {
 
 /* Active nav link styles */
 .nav-link.active {
-    color: #fbbf24; /* yellow-400 in Tailwind */
+    color: #40E0D0 !important; /* Turquoise */
 }
 
 /* Custom bounce animation for Get in Touch */
@@ -1405,4 +1342,171 @@ html {
 #contact .grid > div:hover {
     transform: scale(1.02);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Update navbar background while keeping existing styles */
+#sticky-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: linear-gradient(
+        to right,
+        #3b82f6 0%,    /* Blue */
+        #6366f1 50%,   /* Indigo */
+        #8b5cf6 100%   /* Purple */
+    );
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+/* Update scrolled navbar background */
+#sticky-header.scrolled {
+    background: linear-gradient(
+        to right,
+        rgba(59, 130, 246, 0.95) 0%,    /* Blue */
+        rgba(99, 102, 241, 0.95) 50%,    /* Indigo */
+        rgba(139, 92, 246, 0.95) 100%    /* Purple */
+    );
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Keep the hover effects but update the color */
+.nav-link:hover {
+    color: #40E0D0 !important; /* Turquoise */
+}
+
+/* Update active nav link color */
+.nav-link.active {
+    color: #40E0D0 !important; /* Turquoise */
+}
+
+/* Contact Section Styles */
+#contact {
+    background: linear-gradient(
+        135deg,
+        rgba(59, 130, 246, 0.05) 0%,    /* Blue */
+        rgba(99, 102, 241, 0.05) 50%,    /* Indigo */
+        rgba(139, 92, 246, 0.05) 100%    /* Purple */
+    );
+}
+
+/* Contact form container */
+.contact-form-container {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+/* Contact info container */
+.contact-info-container {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+/* Contact headings */
+#contact h2, #contact h3 {
+    background: linear-gradient(
+        45deg,
+        #3b82f6,    /* Blue */
+        #6366f1,    /* Indigo */
+        #8b5cf6     /* Purple */
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Form inputs */
+#contact input:focus, 
+#contact textarea:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+/* Submit button */
+#contact button[type="submit"] {
+    background: linear-gradient(
+        to right,
+        #3b82f6,    /* Blue */
+        #6366f1     /* Indigo */
+    );
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#contact button[type="submit"]:hover {
+    background: linear-gradient(
+        to right,
+        #6366f1,    /* Indigo */
+        #8b5cf6     /* Purple */
+    );
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+/* Contact info icons */
+#contact .contact-info-container svg {
+    color: #6366f1;
+}
+
+/* Hover effects for contact containers */
+.contact-info-container:hover,
+.contact-form-container:hover {
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.15);
+    transform: translateY(-2px);
+}
+
+/* Contact section animations */
+.contact-info-container,
+.contact-form-container {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* About section heading gradient */
+#about .text-4xl.font-bold {
+    background: linear-gradient(
+        45deg,
+        #3b82f6,    /* Blue */
+        #6366f1,    /* Indigo */
+        #8b5cf6     /* Purple */
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Skills progress bars */
+#about .progress-bar {
+    background: linear-gradient(
+        to right,
+        #3b82f6,    /* Blue */
+        #6366f1     /* Indigo */
+    );
+    transition: width 1.5s ease-in-out, box-shadow 0.3s ease;
+}
+
+#about .progress-bar:hover {
+    background: linear-gradient(
+        to right,
+        #6366f1,    /* Indigo */
+        #8b5cf6     /* Purple */
+    );
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+}
+
+/* About text content - keep dark blue */
+#about p {
+    color: #1e3a8a; /* blue-900 - rich dark blue */
+    font-weight: 500;
+}
+
+/* Make sure all paragraph text in about section is dark blue */
+#about .max-w-xl.mb-4,
+#about .max-w-xl {
+    color: #1e3a8a; /* blue-900 - rich dark blue */
+    font-weight: 500;
 }
